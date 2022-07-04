@@ -1,0 +1,59 @@
+﻿@model IEnumerable<TrainingDemoNet6.Models.CategoryModel>
+
+@{
+    ViewData["Title"] = "Index";
+}
+<partial name="_Notifications" />
+<div class="container p-3">
+    <div class="row pt-4">
+        <div class="col-6">
+            <h2 class="">Categories</h2>
+        </div>
+        <div class="col-6 text-end">
+            <a asp-controller="Category" asp-action="Create">
+                <div class="btn btn-success m-auto"><i class="bi bi-plus-circle p-2"></i> Create New Category</div>
+            </a>
+        </div>
+    </div>
+</div>
+
+
+<table class="table table-default table-hover table-striped mt-4">
+    <thead>
+        <tr>
+            
+            <th>
+                @Html.DisplayNameFor(model => model.Name)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.DisplayOrder)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.CreatedAt)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                
+                <td>
+                    @Html.DisplayFor(modelItem => item.Name)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.DisplayOrder)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.CreatedAt)
+                </td>
+                <td>
+                    <a class="btn btn-warning p-2 m-1" asp-controller="Category" asp-action="Edit" asp-route-id="@item.Id">
+                        <i class="bi bi-pencil-square p-2"></i> Edit
+                    </a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
